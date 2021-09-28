@@ -28,15 +28,17 @@ def goto_n_click(array, sleep_time=5):
     mouse.click(Button.left)
 
 def join_meet():
+    elements_pos={
+        "sound":[615, 754],
+        "camera":[717, 754],
+        "participa":[1368, 599]
+    }
     os.system("pkill stretchly")
     meet_link="https://meet.google.com/dfj-rjgp-vbe"
-    # os.system(browser + " https://meet.google.com/dfj-rjgp-vbe")
-    # os.system(browser + " https://meet.google.com/kqf-pqts-gas &")
     os.system(browser + " " + meet_link + " & ")
-    # print("MIHHHH")
     # goto_n_click([1389, 585]) #Lectii online 12A
     goto_n_click([615, 754], 20) #sound off
-    goto_n_click([717, 754],0) #camera off
+    goto_n_click([717, 754] ,0) #camera off
     goto_n_click((1368, 599)) #Participa acum
     os.system("stretchly &")
 
