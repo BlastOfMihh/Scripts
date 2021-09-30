@@ -7,7 +7,7 @@ import datetime
 import time
 import os
 import argparse
-parser = argparse.ArgumentParser(prefix_chars='-+/', description="This is to demonstrate multiple prefix characters")
+parser = argparse.ArgumentParser(prefix_chars='-+/', description="argumente")
 parser.add_argument("-now")
 parser.add_argument("+a", "++add")
 parser.add_argument("-s", "--sub")
