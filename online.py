@@ -23,7 +23,7 @@ day = datetime.date.weekday(dt.now())
 active_in_meet=False
 
 orar = [
-    [21, 22], #Luni
+    [8, 9, 10, 12, 13], #Luni
     [9, 10, 11, 14], #Marti
     [8, 9, 13], #Miercuri
     [11, 12, 13], #Azi e JOI!
@@ -48,10 +48,14 @@ def join_meet():
     meet_link="https://meet.google.com/dfj-rjgp-vbe"
     os.system(browser + " " + meet_link + " & ")
     # goto_n_click([1389, 585]) #Lectii online 12A
-    goto_n_click(elements_pos["sound"]) #sound off
+    goto_n_click(elements_pos["sound"],10) #sound off
     goto_n_click(elements_pos["camera"] ,0) #camera off
     goto_n_click(elements_pos["participa"]) #Participa acum
     os.system("stretchly &")
+
+
+def exit_meet():
+    os.system("pkill brave")
 
 #args
 if args.now=="NOW":
@@ -59,23 +63,23 @@ if args.now=="NOW":
     if active_in_meet==False:
         join_meet()
 
-def exit_meet():
-    active_in_meet=False
-    os.system("pkill brave")
-
-
 while 1:
     for h in orar[day]:
         if active_in_meet==False and dt.now().hour==h-1 and dt.now().minute==59:
             join_meet()
+            active_in_meet=True
             print(active_in_meet)
             print(dt.now().minute)
             print(dt.now().second)
         elif active_in_meet==True and dt.now().hour==h and dt.now().minute==55:
             exit_meet()
+            active_in_meet=False
             print(active_in_meet)
             print(dt.now().minute)
             print(dt.now().second)
             # print(time.ctime()+"hello")
             # print(dt.now().minute)
+        if dt.now().hour==15:
+            exit_meet()
+            exit
     time.sleep(1)
